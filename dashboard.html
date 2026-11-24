@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Dashboard - pharmaceuticOnline</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header>
+    <div class="logo" style="display: flex; align-items: center; gap: 10px;">
+      <img src="assets/images/images.jpeg" alt="pharmaceuticOnline Logo" style="width: 34px; height: 34px; border-radius: 8px; object-fit: cover;">
+      <div>pharmaceutic<span>Online</span></div>
+    </div>
+    <div>24/7 Trusted Online Pharmacy & Healthcare Delivery</div>
+  </header>
+
+  <nav class="topnav">
+    <div class="nav-links">
+      <a href="index.html">Store</a>
+      <a href="cart.html">Cart <span id="cartCount" class="badge">0</span></a>
+    </div>
+    <div class="nav-links" id="authNav"></div>
+  </nav>
+
+  <div class="container">
+    <h2 id="welcomeHeading">My Orders & Prescriptions</h2>
+    <div id="orderHistoryContainer"></div>
+  </div>
+
+  <footer>
+    &copy; 2026 pharmaceuticOnline – Online Medicine & Healthcare Store. All Rights Reserved.
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/auth.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const user = getCurrentUser();
+      if (!user) {
+        window.location.href = "login.html";
+        return;
+      }
+
+      document.getElementById("welcomeHeading").innerText = `Welcome, ${user.name} – Your Order History`;
+      const allOrders = JSON.parse(localStorage.getItem("pq_orders")) || [];
+      const myOrders = allOrders.filter(o => o.userEmail === user.email);
+      const container = document.getElementById("orderHistoryContainer");
+
+      if (myOrders.length === 0) {
+        container.innerHTML = `<p>You have not placed any medicine orders yet. <a href="index.html">Browse Store</a></p>`;
+        return;
+      }
+
+      container.innerHTML = myOrders.reverse().map(order => `
+        <div class="form-box" style="margin-bottom:20px;">
+          <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap;">
+            <h3>Order #${order.orderId}</h3>
+            <span class="status-badge status-${order.status.toLowerCase()}">${order.status}</span>
+          </div>
+          <p><small><strong>Date:</strong> ${order.date} | <strong>Address:</strong> ${order.address} | <strong>Phone:</strong> ${order.phone}</small></p>
+          ${order.prescriptionFile ? `<p><small><strong>Prescription Attached:</strong> ${order.prescriptionFile}</small></p>` : ""}
+          <ul style="margin:10px 0 10px 20px;">
+            ${order.items.map(item => `<li>${item.name} × ${item.qty} (৳ ${item.price * item.qty})</li>`).join("")}
+          </ul>
+          <p><strong>Total Paid:</strong> ৳ ${order.total}</p>
+        </div>
+      `).join("");
+    });
+  </script>
+</body>
+</html>

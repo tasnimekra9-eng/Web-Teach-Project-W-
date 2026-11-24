@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manage Medicine Stock - pharmaceuticOnline</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header>
+    <div class="logo" style="display: flex; align-items: center; gap: 10px;">
+      <img src="assets/images/images.jpeg" alt="pharmaceuticOnline Logo" style="width: 34px; height: 34px; border-radius: 8px; object-fit: cover;">
+      <div>pharmaceutic<span>Online</span></div>
+    </div>
+    <div>Pharmacist & Inventory Management Panel</div>
+  </header>
+
+  <nav class="topnav">
+    <div class="nav-links">
+      <a href="index.html">View Store</a>
+      <a href="admin.html">Admin Panel</a>
+      <a href="manage-stock.html" class="active">Manage Medicine Stock</a>
+      <a href="customer-orders.html">Customer Orders & Prescription Verification</a>
+    </div>
+    <div class="nav-links" id="authNav"></div>
+  </nav>
+
+  <div class="container">
+    <h2>Manage Medicine Stock</h2>
+    <div id="adminInventoryTable" style="margin-bottom:35px;"></div>
+  </div>
+
+  <footer>
+    &copy; 2026 pharmaceuticOnline – Online Medicine & Healthcare Store. All Rights Reserved.
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login / Register - pharmaceuticOnline</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header>
+    <div class="logo" style="display: flex; align-items: center; gap: 10px;">
+      <img src="assets/images/images.jpeg" alt="pharmaceuticOnline Logo" style="width: 34px; height: 34px; border-radius: 8px; object-fit: cover;">
+      <div>pharmaceutic<span>Online</span></div>
+    </div>
+    <div>24/7 Trusted Online Pharmacy & Healthcare Delivery</div>
+  </header>
+
+  <nav class="topnav">
+    <div class="nav-links">
+      <a href="index.html">Store</a>
+      <a href="cart.html">Cart <span id="cartCount" class="badge">0</span></a>
+    </div>
+    <div class="nav-links" id="authNav"></div>
+  </nav>
+
+  <div class="container">
+    <div class="auth-wrapper">
+      <!-- Login Form -->
+      <div class="form-box">
+        <h2>Customer / Admin Login</h2>
+        <div id="loginError" class="error-msg"></div>
+        <form onsubmit="return handleLogin(event)">
+          <div class="form-group">
+            <label for="loginEmail">Email Address</label>
+            <input type="email" id="loginEmail" placeholder="Enter your email">
+          </div>
+          <div class="form-group">
+            <label for="loginPassword">Password</label>
+            <input type="password" id="loginPassword" placeholder="Enter your password">
+          </div>
+          <button type="submit" class="btn btn-primary" style="width:100%;">Login</button>
+        </form>
+        <p style="margin-top:15px; font-size:13px; color:#555;">
+          <strong>Demo Admin:</strong> admin@pharma.com / admin123<br>
+          <strong>Demo User:</strong> rahim@gmail.com / 1234
+        </p>
+      </div>
+
+      <!-- Register Form -->
+      <div class="form-box">
+        <h2>Create New Account</h2>
+        <div id="regError" class="error-msg"></div>
+        <form onsubmit="return handleRegister(event)">
+          <div class="form-group">
+            <label for="regName">Full Name</label>
+            <input type="text" id="regName" placeholder="Enter your full name">
+          </div>
+          <div class="form-group">
+            <label for="regEmail">Email Address</label>
+            <input type="email" id="regEmail" placeholder="Enter your email">
+          </div>
+          <div class="form-group">
+            <label for="regPassword">Password</label>
+            <input type="password" id="regPassword" placeholder="Create a password">
+          </div>
+          <button type="submit" class="btn btn-success" style="width:100%;">Register</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    &copy; 2026 pharmaceuticOnline – Online Medicine & Healthcare Store. All Rights Reserved.
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/auth.js"></script>
+</body>
+</html>

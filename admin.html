@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Panel - pharmaceuticOnline</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header>
+    <div class="logo" style="display: flex; align-items: center; gap: 10px;">
+      <img src="assets/images/images.jpeg" alt="pharmaceuticOnline Logo" style="width: 34px; height: 34px; border-radius: 8px; object-fit: cover;">
+      <div>pharmaceutic<span>Online</span></div>
+    </div>
+    <div>Pharmacist & Inventory Management Panel</div>
+  </header>
+
+  <nav class="topnav">
+    <div class="nav-links">
+      <a href="index.html">View Store</a>
+      <a href="admin.html" class="active">Admin Panel</a>
+      <a href="manage-stock.html">Manage Medicine Stock</a>
+      <a href="customer-orders.html">Customer Orders & Prescription Verification</a>
+    </div>
+    <div class="nav-links" id="authNav"></div>
+  </nav>
+
+  <div class="container">
+    <!-- Add Medicine Form -->
+    <div class="form-box" style="max-width: 100%; margin-bottom:30px;">
+      <h2>Add New Medicine / Healthcare Product</h2>
+      <form onsubmit="return addNewProduct(event)">
+        <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap:15px;">
+          <div class="form-group">
+            <label>Medicine / Product Name</label>
+            <input type="text" id="prodName" required placeholder="e.g., Napa Extend 665mg">
+          </div>
+          <div class="form-group">
+            <label>Manufacturer</label>
+            <input type="text" id="prodManufacturer" required placeholder="e.g., Beximco Pharma">
+          </div>
+          <div class="form-group">
+            <label>Category</label>
+            <select id="prodCategory">
+              <option value="Pain & Fever">Pain & Fever</option>
+              <option value="Gastric & Digestion">Gastric & Digestion</option>
+              <option value="Antibiotics">Antibiotics</option>
+              <option value="Allergy & Cold">Allergy & Cold</option>
+              <option value="Healthcare Devices">Healthcare Devices</option>
+              <option value="Heart & Blood Pressure">Heart & Blood Pressure</option>
+              <option value="Diabetes Care">Diabetes Care</option>
+              <option value="Mental Wellness & Neurology">Mental Wellness & Neurology</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Price (৳)</label>
+            <input type="number" id="prodPrice" required min="1" placeholder="e.g., 20">
+          </div>
+          <div class="form-group">
+            <label>Stock Quantity</label>
+            <input type="number" id="prodStock" required min="1" placeholder="e.g., 100">
+          </div>
+          <div class="form-group">
+            <label>Prescription Required?</label>
+            <select id="prodRx">
+              <option value="false">No (OTC)</option>
+              <option value="true">Yes (Rx Required)</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Description / Dosage Info</label>
+          <input type="text" id="prodDesc" required placeholder="Brief usage and dosage details">
+        </div>
+        <button type="submit" class="btn btn-primary">Add Product to Inventory</button>
+      </form>
+    </div>
+  </div>
+
+  <footer>
+    &copy; 2026 pharmaceuticOnline – Online Medicine & Healthcare Store. All Rights Reserved.
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>
